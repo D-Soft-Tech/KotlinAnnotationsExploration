@@ -1,6 +1,6 @@
 package com.pepsa.pepsadispatch.shared.utils.networkUtils
 
-import com.pepsa.pepsadispatch.shared.presentation.viewStates.ViewState
+import com.dsofttech.annotations.presentation.viewStates.ViewState
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton

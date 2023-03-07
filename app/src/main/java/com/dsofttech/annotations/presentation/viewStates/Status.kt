@@ -1,4 +1,4 @@
-package com.pepsa.pepsadispatch.shared.presentation.viewStates
+package com.dsofttech.annotations.presentation.viewStates
 
 enum class Status {
     ERROR,

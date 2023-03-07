@@ -3,6 +3,8 @@ package com.dsofttech.annotations.utils.di
 import com.dsofttech.annotations.BuildConfig
 import com.dsofttech.annotations.data.remote.apis.JsonPlaceHolderApiService
 import com.dsofttech.annotations.data.remote.interceptors.AuthenticationInterceptor
+import com.dsofttech.annotations.domain.interactors.RemoteDataSourceRepository
+import com.dsofttech.annotations.domain.interactors.RemoteDataSourceRepositoryImpl
 import com.dsofttech.annotations.utils.AppConstants.TIME_OUT_10
 import com.dsofttech.annotations.utils.AppConstants.TIME_OUT_20
 import com.google.gson.Gson
@@ -64,4 +66,11 @@ object AppModule {
     @Singleton
     @Provides
     fun providesGson(): Gson = Gson()
+
+    @Singleton
+    @Provides
+    fun providesRemoteDataSourceRepository(
+        remoteDataSourceRepositoryImpl: RemoteDataSourceRepositoryImpl,
+    ): RemoteDataSourceRepository =
+        remoteDataSourceRepositoryImpl
 }

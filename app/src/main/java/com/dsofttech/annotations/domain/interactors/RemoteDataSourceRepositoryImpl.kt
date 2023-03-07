@@ -3,9 +3,9 @@ package com.dsofttech.annotations.domain.interactors
 import com.dsofttech.annotations.data.remote.apis.JsonPlaceHolderApiService
 import com.dsofttech.annotations.domain.models.PostDomain
 import com.dsofttech.annotations.domain.models.UserDomain
+import com.dsofttech.annotations.presentation.viewStates.ViewState
 import com.dsofttech.annotations.utils.ModelMapper.toPostDomain
 import com.dsofttech.annotations.utils.ModelMapper.toUserDomain
-import com.pepsa.pepsadispatch.shared.presentation.viewStates.ViewState
 import com.pepsa.pepsadispatch.shared.utils.networkUtils.NetworkUtils
 import javax.inject.Inject
 import javax.inject.Singleton

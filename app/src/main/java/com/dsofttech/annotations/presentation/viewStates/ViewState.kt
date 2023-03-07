@@ -1,10 +1,4 @@
-package com.pepsa.pepsadispatch.shared.presentation.viewStates
-
-import android.app.Dialog
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import com.pepsa.pepsadispatch.R
-import com.pepsa.pepsadispatch.shared.utils.AppUtils.showSnackBar
+package com.dsofttech.annotations.presentation.viewStates
 
 data class ViewState<out T>(
     val status: Status,
@@ -47,43 +41,5 @@ data class ViewState<out T>(
             content,
             "App just stated up, no action required",
         )
-
-        fun <T> Fragment.observeServerResponse(
-            serverResponse: LiveData<ViewState<T>>,
-            loader: Dialog,
-            successAction: (response: T) -> Unit,
-        ) {
-            serverResponse.observe(viewLifecycleOwner) {
-                when (it.status) {
-                    Status.SUCCESS -> {
-                        loader.dismiss()
-                        loader.cancel()
-                        successAction(it.content!!)
-                    }
-                    Status.SERVER_ERROR -> {
-                        loader.dismiss()
-                        loader.cancel()
-                        showSnackBar(R.string.server_error)
-                    }
-                    Status.INITIAL_DEFAULT -> {
-                        loader.dismiss()
-                        loader.cancel()
-                    }
-                    Status.TIMEOUT -> {
-                        loader.dismiss()
-                        loader.cancel()
-                        showSnackBar(R.string.time_out)
-                    }
-                    Status.LOADING -> {
-                        loader.show()
-                    }
-                    Status.ERROR -> {
-                        loader.dismiss()
-                        loader.cancel()
-                        showSnackBar(R.string.failed_tryagain)
-                    }
-                }
-            }
-        }
     }
 }
