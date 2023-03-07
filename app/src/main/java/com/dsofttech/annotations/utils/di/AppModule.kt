@@ -5,6 +5,7 @@ import com.dsofttech.annotations.data.remote.apis.JsonPlaceHolderApiService
 import com.dsofttech.annotations.data.remote.interceptors.AuthenticationInterceptor
 import com.dsofttech.annotations.utils.AppConstants.TIME_OUT_10
 import com.dsofttech.annotations.utils.AppConstants.TIME_OUT_20
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -59,4 +60,8 @@ object AppModule {
     fun providesJsonPlaceHolderApiService(
         retrofit: Retrofit,
     ): JsonPlaceHolderApiService = retrofit.create(JsonPlaceHolderApiService::class.java)
+
+    @Singleton
+    @Provides
+    fun providesGson(): Gson = Gson()
 }
