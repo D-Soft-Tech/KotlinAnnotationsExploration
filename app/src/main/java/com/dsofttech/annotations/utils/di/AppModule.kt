@@ -15,7 +15,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -27,7 +26,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    @Named("logging_interceptor")
     fun providesLoggingInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         setLevel(HttpLoggingInterceptor.Level.BODY)
     }
@@ -35,7 +33,7 @@ object AppModule {
     @Singleton
     @Provides
     fun providesOkHttpClient(
-        @Named("logging_interceptor") loggingInterceptor: Interceptor,
+        loggingInterceptor: Interceptor,
         authTokenInterceptor: AuthenticationInterceptor,
     ): OkHttpClient = OkHttpClient().newBuilder()
         .connectTimeout(TIME_OUT_10, TimeUnit.SECONDS)

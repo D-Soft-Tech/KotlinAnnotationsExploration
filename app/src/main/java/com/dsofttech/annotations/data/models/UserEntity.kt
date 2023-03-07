@@ -1,4 +1,4 @@
-package com.dsofttech.annotations.data
+package com.dsofttech.annotations.data.models
 
 import com.dsofttech.annotations.data.annotations.AllowedDateFormat
 
