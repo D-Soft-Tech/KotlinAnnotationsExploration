@@ -7,10 +7,10 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface JsonPlaceHolderApiService {
-    @GET("/users/1")
+    @GET("/users")
     suspend fun getUsers(): Response<List<GetUserEntity>>
 
-    @GET("/post/1")
+    @GET("/posts")
     @AuthenticationRequired
     suspend fun getPosts(): Response<List<PostEntity>>
 }

@@ -13,7 +13,7 @@ class AuthenticationInterceptor @Inject constructor() : Interceptor {
         val invocation =
             chain.request().tag(Invocation::class.java) ?: return chain.proceed(chain.request())
         val shouldAttachAuthHeader =
-            invocation.method().annotations.any { it.annotationClass == AuthenticationRequired::class.java }
+            invocation.method().annotations.any { it.annotationClass == AuthenticationRequired::class }
 
         return if (shouldAttachAuthHeader) {
             chain.proceed(

@@ -12,6 +12,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,8 +45,8 @@ object AppModule {
         .readTimeout(TIME_OUT_20, TimeUnit.SECONDS)
         .writeTimeout(TIME_OUT_10, TimeUnit.SECONDS)
         .retryOnConnectionFailure(true)
-        .addInterceptor(loggingInterceptor)
         .addInterceptor(authTokenInterceptor)
+        .addInterceptor(loggingInterceptor)
         .build()
 
     @Singleton
@@ -73,4 +75,8 @@ object AppModule {
         remoteDataSourceRepositoryImpl: RemoteDataSourceRepositoryImpl,
     ): RemoteDataSourceRepository =
         remoteDataSourceRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun providesIoDispatchers(): CoroutineDispatcher = Dispatchers.IO
 }

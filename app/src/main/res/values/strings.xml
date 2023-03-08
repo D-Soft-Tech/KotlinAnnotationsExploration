@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KotlinAnnotationsExploration</string>
+    <string name="users_fetched_successfully">Users fetched successfully</string>
+    <string name="posts_fetched_successfully">Posts fetched successfully</string>
 </resources>

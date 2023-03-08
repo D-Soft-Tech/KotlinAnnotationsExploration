@@ -2,7 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -20,7 +20,7 @@ android {
 
         Properties properties = new Properties();
         properties.load(rootProject.file("local.properties").newDataInputStream())
-        buildConfigField("String",  "API_BASE_URL", "\"${properties.getProperty("API_BASE_URL")}\"")
+        buildConfigField("String", "API_BASE_URL", "\"${properties.getProperty("API_BASE_URL")}\"")
     }
 
     buildTypes {
@@ -41,12 +41,14 @@ android {
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    implementation 'androidx.fragment:fragment-ktx:1.6.0-alpha06'
+    // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
@@ -62,7 +64,6 @@ dependencies {
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutines_for_viewmodel"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutines_for_viewmodel"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$coroutines_for_viewmodel"
 }
