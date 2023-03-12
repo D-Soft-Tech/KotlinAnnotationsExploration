@@ -3,10 +3,13 @@ package com.dsofttech.annotations.presentation.ui.activities
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.dsofttech.annotations.R
+import com.dsofttech.annotations.databinding.ActivityMainBinding
 import com.dsofttech.annotations.presentation.viewModels.AppViewModel
 import com.dsofttech.annotations.presentation.viewStates.Status
 import com.dsofttech.annotations.utils.AppUtils.showToast
+import com.dsofttech.dsoftentitymapperversion1.core.annotations.DSoftEntityMapper
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -15,13 +18,18 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val appViewModel: AppViewModel by viewModels()
+    private lateinit var binding: ActivityMainBinding
 
     @Inject
     lateinit var gson: Gson
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         appViewModel.loadDataFromRemote()
+        val generatedEnumFromDSoftTechMarker1 =
+            DSoftTechMarker1.values().joinToString(", \n\n") { it.name }
+        binding.dataFromGeneratedMapper = generatedEnumFromDSoftTechMarker1
+        binding.executePendingBindings()
     }
 
     override fun onResume() {
@@ -53,5 +61,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    @DSoftEntityMapper
+    fun testingMyAnnotationClass() {
+        println("Just testing")
+    }
+
+    @DSoftEntityMapper
+    fun anotherMethodToTestMyAnnotationClass() {
+        println("Just testing, 2")
     }
 }

@@ -33,8 +33,8 @@ class Processor : AbstractProcessor() {
                 addType(
                     TypeSpec.enumBuilder("DSoftTechMarker1")
                         .apply {
-                            map[it]?.forEach {
-                                addEnumConstant(it.uppercase())
+                            map[it]?.forEach { functionName ->
+                                addEnumConstant(functionName.uppercase())
                             }
                         }.build(),
                 ).build()
