@@ -50,6 +50,8 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.6.0-alpha06'
     // Import the annotation module
     implementation project(path: ':DSoftEntityMapperVersion1')
+    // Including Kapt for the processor
+    kapt project(':DSoftEntityMapperVersion1')
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"

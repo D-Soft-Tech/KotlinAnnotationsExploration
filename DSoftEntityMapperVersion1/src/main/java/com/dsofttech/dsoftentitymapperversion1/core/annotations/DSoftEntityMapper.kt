@@ -6,4 +6,4 @@ package com.dsofttech.dsoftentitymapperversion1.core.annotations
     AnnotationTarget.CLASS,
 )
 @Retention(AnnotationRetention.SOURCE)
-annotation class DSoftEntityMarker
+annotation class DSoftEntityMapper
